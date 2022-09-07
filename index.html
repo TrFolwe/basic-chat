@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chat App</title>
+	<script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="chat-container"></div>
+	<div class="form-container">
+		<form class="chat-form">
+			<input type="text" class="message" required>
+			<button type="submit">Send Message</button>
+		</form>
+	</div>
+	</div>
+
+	<script>
+		$(() => {
+		const socket = io("http://localhost:80");
+
+		socket.on("connection");
+
+		socket.on('message', (data) => {
+			$(`.chat-container`).append(`<p style="margin: 25px; padding: 5px; border-bottom: 1px solid black;" class="message-text">${data} - ${(new Date()).toLocaleDateString()}</p>`);
+		});
+
+		$(`.chat-form`).on("submit", e => {
+			e.preventDefault();
+			socket.emit('message', document.querySelector(".message").value);
+		});
+	});
+	</script>
+</body>
+</html>
