@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    box-shadow: 5px 10px wheat;
+    border: 1px solid black;
+    width: 75%;
+    height: 75%;
+    font-size: 26px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-container {
+    box-shadow: 5px 5px wheat;
+    position: absolute;
+    border: 1px solid black;
+    width: 75%;
+    height: 70%;
+    overflow: auto;
+}
+
+.form-container {
+    left: 50%;
+    top: 93%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+button[type='submit'] {
+    border: none;
+    border-radius: 5px;
+    background: green;
+    color: white;
+    padding: 5px;
+}
